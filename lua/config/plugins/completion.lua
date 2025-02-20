@@ -9,6 +9,7 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
+      "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -23,6 +24,12 @@ return {
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
+        },
+        formatting = {
+          format = function(entry, item)
+            -- Apply tailwind formatting
+            return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+          end,
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),

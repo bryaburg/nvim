@@ -11,6 +11,9 @@ return {
     lazy = true,
     opts = {
       auto_install = true,
+      ensure_installed = {
+        "tailwindcss",
+      },
     },
   },
   {

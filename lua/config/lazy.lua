@@ -14,16 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 
--- Hey! Put lazy into the runtimepath for neovim!
-vim.opt.runtimepath:prepend(lazypath)
-
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 		{ "folke/tokyonight.nvim",  config = function() vim.cmd.colorscheme "tokyonight" end },
@@ -31,7 +21,7 @@ require("lazy").setup({
 	},
 	change_detection = {
 		-- automatically check for config file changes and reload the ui
-		enabled = false,
-		notify = false, -- get a notification when changes are found
+		enabled = true,
+		notify = true, -- get a notification when changes are found
 	},
 })

@@ -1,0 +1,113 @@
+NEOVIM KEYBINDINGS
+=================
+
+Leader Key: Space
+LocalLeader Key: \
+
+FILE OPERATIONS
+--------------
+<leader><space>   Smart Find Files
+<leader>,         Buffers
+<leader>/         Grep
+<leader>:         Command History
+<leader>e         File Explorer
+<leader>fb        Buffers
+<leader>fc        Find Config File
+<leader>ff        Find Files
+<leader>fg        Find Git Files
+<leader>fp        Projects
+<leader>fr        Recent Files
+<C-p>             Find Files (Telescope)
+
+GIT OPERATIONS
+-------------
+<leader>gb        Git Branches
+<leader>gl        Git Log
+<leader>gL        Git Log Line
+<leader>gs        Git Status
+<leader>gS        Git Stash
+<leader>gd        Git Diff (Hunks)
+<leader>gf        Git Log File
+<leader>gB        Git Browse
+<leader>gg        Lazygit
+<leader>lg        LazyGit
+
+SEARCH & NAVIGATION
+------------------
+<leader>sb        Buffer Lines
+<leader>sB        Grep Open Buffers
+<leader>sg        Grep
+<leader>sw        Visual selection or word search
+<leader>sj        Jumps
+<leader>sk        Keymaps
+<leader>sl        Location List
+<leader>sm        Marks
+<leader>sM        Man Pages
+<leader>sp        Search for Plugin Spec
+<leader>sq        Quickfix List
+<leader>sR        Resume
+<leader>su        Undo History
+<leader>ss        LSP Symbols
+<leader>sS        LSP Workspace Symbols
+
+LSP & CODE
+----------
+gd                Goto Definition
+gD                Goto Declaration
+gr                References
+gI                Goto Implementation
+gy                Goto Type Definition
+<leader>cs        Symbols (Trouble)
+<leader>cl        LSP Definitions/references (Trouble)
+<leader>cR        Rename File
+<leader>gf        Format Code
+
+DIAGNOSTICS & TROUBLE
+--------------------
+<leader>xx        Diagnostics (Trouble)
+<leader>xX        Buffer Diagnostics (Trouble)
+<leader>xL        Location List (Trouble)
+<leader>xQ        Quickfix List (Trouble)
+
+UI & TOGGLES
+-----------
+<leader>us        Toggle Spelling
+<leader>uw        Toggle Wrap
+<leader>uL        Toggle Relative Number
+<leader>ud        Toggle Diagnostics
+<leader>ul        Toggle Line Number
+<leader>uC        Colorschemes
+<leader>un        Dismiss All Notifications
+<leader>z         Toggle Zen Mode
+<leader>Z         Toggle Zoom
+<leader>.         Toggle Scratch Buffer
+<leader>S         Select Scratch Buffer
+<c-/>             Toggle Terminal
+<c-_>             Toggle Terminal (alternative)
+
+HELP & DOCUMENTATION
+-------------------
+<leader>?         Show All Keymaps
+<leader>!         Show All Keymaps (Visual Mode)
+<leader>N         Neovim News
+
+BUFFER MANAGEMENT
+----------------
+<leader>bd        Delete Buffer
+
+NAVIGATION
+----------
+]]                Next Reference
+[[                Prev Reference
+
+NOTIFICATIONS
+------------
+<leader>n         Notification History
+
+DEBUG
+-----
+<F5>              Debug (details not provided in excerpts)
+
+MISC
+----
+TextYankPost      Highlight when yanking (copying) text (automatic)

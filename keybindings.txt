@@ -1,113 +1,130 @@
-NEOVIM KEYBINDINGS
-=================
+NEOVIM KEYBINDINGS REFERENCE
+===========================
 
-Leader Key: Space
-LocalLeader Key: \
-
-FILE OPERATIONS
---------------
-<leader><space>   Smart Find Files
-<leader>,         Buffers
-<leader>/         Grep
-<leader>:         Command History
-<leader>e         File Explorer
-<leader>fb        Buffers
-<leader>fc        Find Config File
-<leader>ff        Find Files
-<leader>fg        Find Git Files
-<leader>fp        Projects
-<leader>fr        Recent Files
-<C-p>             Find Files (Telescope)
-
-GIT OPERATIONS
--------------
-<leader>gb        Git Branches
-<leader>gl        Git Log
-<leader>gL        Git Log Line
-<leader>gs        Git Status
-<leader>gS        Git Stash
-<leader>gd        Git Diff (Hunks)
-<leader>gf        Git Log File
-<leader>gB        Git Browse
-<leader>gg        Lazygit
-<leader>lg        LazyGit
-
-SEARCH & NAVIGATION
+GENERAL/LEADER KEYS
 ------------------
-<leader>sb        Buffer Lines
-<leader>sB        Grep Open Buffers
-<leader>sg        Grep
-<leader>sw        Visual selection or word search
-<leader>sj        Jumps
-<leader>sk        Keymaps
-<leader>sl        Location List
-<leader>sm        Marks
-<leader>sM        Man Pages
-<leader>sp        Search for Plugin Spec
-<leader>sq        Quickfix List
-<leader>sR        Resume
-<leader>su        Undo History
-<leader>ss        LSP Symbols
-<leader>sS        LSP Workspace Symbols
+Space           Leader key (<leader>)
+\               Local leader key (<localleader>)
 
-LSP & CODE
-----------
-gd                Goto Definition
-gD                Goto Declaration
-gr                References
-gI                Goto Implementation
-gy                Goto Type Definition
-<leader>cs        Symbols (Trouble)
-<leader>cl        LSP Definitions/references (Trouble)
-<leader>cR        Rename File
-<leader>gf        Format Code
+BASIC OPERATIONS
+---------------
+K               Hover documentation
+<leader>gd      Go to definition
+<leader>gr      Find references
+<leader>ca      Code actions
 
-DIAGNOSTICS & TROUBLE
---------------------
-<leader>xx        Diagnostics (Trouble)
-<leader>xX        Buffer Diagnostics (Trouble)
-<leader>xL        Location List (Trouble)
-<leader>xQ        Quickfix List (Trouble)
+WHICH-KEY
+---------
+<leader>?       Show buffer local keymaps
 
-UI & TOGGLES
------------
-<leader>us        Toggle Spelling
-<leader>uw        Toggle Wrap
-<leader>uL        Toggle Relative Number
-<leader>ud        Toggle Diagnostics
-<leader>ul        Toggle Line Number
-<leader>uC        Colorschemes
-<leader>un        Dismiss All Notifications
-<leader>z         Toggle Zen Mode
-<leader>Z         Toggle Zoom
-<leader>.         Toggle Scratch Buffer
-<leader>S         Select Scratch Buffer
-<c-/>             Toggle Terminal
-<c-_>             Toggle Terminal (alternative)
-
-HELP & DOCUMENTATION
--------------------
-<leader>?         Show All Keymaps
-<leader>!         Show All Keymaps (Visual Mode)
-<leader>N         Neovim News
-
-BUFFER MANAGEMENT
-----------------
-<leader>bd        Delete Buffer
-
-NAVIGATION
-----------
-]]                Next Reference
-[[                Prev Reference
-
-NOTIFICATIONS
-------------
-<leader>n         Notification History
+TROUBLE
+-------
+<leader>xx      Toggle diagnostics
+<leader>xX      Toggle buffer diagnostics
+<leader>cs      Toggle symbols
+<leader>cl      Toggle LSP (right window)
+<leader>xL      Toggle location list
 
 DEBUG
 -----
-<F5>              Debug (details not provided in excerpts)
+<F5>            Debug actions
+<leader>dt      Toggle breakpoint
+<leader>dc      Continue debugging
 
-MISC
-----
-TextYankPost      Highlight when yanking (copying) text (automatic)
+SNACKS PLUGIN
+------------
+Top Pickers & Explorer:
+<leader><space> Smart Find Files
+<leader>,       Buffers
+<leader>/       Grep
+<leader>:       Command History
+<leader>n       Notification History
+<leader>e       File Explorer
+
+Find Operations:
+<leader>fb      Buffers
+<leader>fc      Find Config File
+<leader>ff      Find Files
+<leader>fg      Find Git Files
+<leader>fp      Projects
+<leader>fr      Recent
+
+Git Operations:
+<leader>gb      Git Branches
+<leader>gl      Git Log
+<leader>gL      Git Log Line
+<leader>gs      Git Status
+<leader>gS      Git Stash
+<leader>gd      Git Diff (Hunks)
+<leader>gf      Git Log File
+<leader>gg      LazyGit
+
+Search Operations:
+<leader>sb      Buffer Lines
+<leader>sB      Grep Open Buffers
+<leader>sg      Grep
+<leader>sw      Grep word under cursor
+<leader>s"      Registers
+<leader>s/      Search History
+<leader>sa      Autocmds
+<leader>sc      Command History
+<leader>sC      Commands
+<leader>sd      Diagnostics
+<leader>sD      Buffer Diagnostics
+<leader>sh      Help Pages
+<leader>sH      Highlights
+<leader>si      Icons
+<leader>sj      Jumps
+<leader>sk      Keymaps
+<leader>sl      Location List
+<leader>sm      Marks
+<leader>sM      Man Pages
+<leader>sp      Search Plugin Spec
+<leader>sq      Quickfix List
+<leader>sR      Resume
+<leader>su      Undo History
+<leader>uC      Colorschemes
+
+LSP Navigation:
+gd              Goto Definition
+gD              Goto Declaration
+gr              References
+gI              Goto Implementation
+gy              Goto Type Definition
+<leader>ss      LSP Symbols
+<leader>sS      LSP Workspace Symbols
+
+Other Features:
+<leader>z       Toggle Zen Mode
+<leader>Z       Toggle Zoom
+<leader>.       Toggle Scratch Buffer
+<leader>S       Select Scratch Buffer
+<leader>bd      Delete Buffer
+<leader>cR      Rename File
+<leader>gB      Git Browse
+<leader>un      Dismiss All Notifications
+<C-/> or <C-_>  Toggle Terminal
+]]              Next Reference
+[[              Previous Reference
+<leader>N       Neovim News
+
+Toggle Options:
+<leader>us      Toggle Spelling
+<leader>uw      Toggle Wrap
+<leader>uL      Toggle Relative Number
+<leader>ud      Toggle Diagnostics
+<leader>ul      Toggle Line Number
+<leader>uc      Toggle Conceallevel
+<leader>uT      Toggle Treesitter
+<leader>ub      Toggle Dark/Light Background
+<leader>uh      Toggle Inlay Hints
+<leader>ug      Toggle Indent
+<leader>uD      Toggle Dim
+
+COMPLETION (nvim-cmp)
+--------------------
+<C-b>           Scroll docs backward
+<C-f>           Scroll docs forward
+<C-Space>       Complete
+<C-e>           Abort completion
+<CR>            Confirm completion

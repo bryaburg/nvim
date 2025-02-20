@@ -13,7 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load configurations
-require("vim-options")
+
+require("config.error").setup()
+require("config.vim-options")
 require("config.lazy")
-require("keymappings")
+require("config.keymappings")

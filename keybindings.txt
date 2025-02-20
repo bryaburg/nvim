@@ -8,10 +8,26 @@ Space           Leader key (<leader>)
 
 BASIC OPERATIONS
 ---------------
-K               Hover documentation
-<leader>gd      Go to definition
-<leader>gr      Find references
-<leader>ca      Code actions
+K               Hover Documentation
+<leader>gd      Goto Definition
+<leader>gr      Goto References
+<leader>ca      Code Action
+gd              Goto Definition
+gr              Find References
+gi              Goto Implementation
+gD              Goto Declaration
+K               Hover Documentation
+<C-k>           Signature Help
+<leader>rn      Rename
+<leader>ca      Code Action
+<leader>f       Format
+<leader>wa      Add Workspace Folder
+<leader>wr      Remove Workspace Folder
+<leader>wl      List Workspace Folders
+<leader>D       Type Definition
+<leader>e       Show Line Diagnostics
+[n]gd           Next Diagnostic
+[p]gd           Previous Diagnostic
 
 WHICH-KEY
 ---------
@@ -85,10 +101,11 @@ Search Operations:
 <leader>su      Undo History
 <leader>uC      Colorschemes
 
-LSP Navigation:
+LSP NAVIGATION & ACTIONS
+-----------------------
 gd              Goto Definition
 gD              Goto Declaration
-gr              References
+gr              Find References
 gI              Goto Implementation
 gy              Goto Type Definition
 <leader>ss      LSP Symbols

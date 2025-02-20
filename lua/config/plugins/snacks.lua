@@ -2,6 +2,10 @@ return{
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  dependencies = {
+    "kdheepak/lazygit.nvim",
+    "nvim-lua/plenary.nvim",
+  },
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
@@ -34,6 +38,8 @@ return{
     { "<c-_>", function() require("snacks").terminal() end, desc = "which_key_ignore" },
     { "]]", function() require("snacks").words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[", function() require("snacks").words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    -- LazyGit
+    { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     {
       "<leader>N",
       desc = "Neovim News",

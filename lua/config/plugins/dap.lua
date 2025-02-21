@@ -1,20 +1,12 @@
+vim.api.nvim_create_augroup("DapGroup", { clear = true })
+
 return {
     {
         "mfussenegger/nvim-dap",
         lazy = false,
         config = function()
             local dap = require("dap")
-            dap.set_log_level("INFO")
-
-            dap.configurations.go = {
-                {
-                    type = "delve",
-                    name = "file",
-                    request = "launch",
-                    program = "${file}",
-                    outputMode = "remote",
-                } -- TESTING??
-            }
+            dap.set_log_level("DEBUG")
 
             vim.keymap.set("n", "<F8>", dap.continue, { desc = "Debug: Continue" })
             vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
@@ -76,6 +68,14 @@ return {
             vim.keymap.set("n", "<leader>dS", function() toggle_debug_ui("scopes") end, { desc = "Debug: toggle scopes ui" })
             vim.keymap.set("n", "<leader>dc", function() toggle_debug_ui("console") end, { desc = "Debug: toggle console ui" })
 
+            vim.api.nvim_create_autocmd("BufEnter", {
+                group = "DapGroup",
+                pattern = "*dap-repl*",
+                callback = function()
+                    vim.wo.wrap = true
+                end,
+            })
+
             dapui.setup({layouts = layouts})
 
             dap.listeners.before.event_terminated.dapui_config = function()
@@ -95,7 +95,11 @@ return {
 
     {
         "jay-babu/mason-nvim-dap.nvim",
-        dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "mfussenegger/nvim-dap",
+            "neovim/nvim-lspconfig",
+        },
         config = function()
             require("mason-nvim-dap").setup({
                 ensure_installed = {
@@ -106,32 +110,27 @@ return {
                     function(config)
                         require("mason-nvim-dap").default_setup(config)
                     end,
-                    -- go = function(config)
-                    --     -- Custom Go config (optional, but ensures proper setup)
-                    --     config.adapters = {
-                    --         type = "executable",
-                    --         command = "dlv",
-                    --         args = { "dap", "-l", "127.0.0.1:38697" },
-                    --     }
-                    --     config.configurations = {
-                    --         {
-                    --             type = "go",
-                    --             name = "Debug",
-                    --             request = "launch",
-                    --             program = "${file}",
-                    --         },
-                    --         {
-                    --             type = "go",
-                    --             name = "Debug Package",
-                    --             request = "launch",
-                    --             program = "${workspaceFolder}",
-                    --         },
-                    --     }
-                    --     require("mason-nvim-dap").default_setup(config)
-                    -- end,
+                    delve = function(config)
+                        table.insert(config.configurations, 1, {
+                            args = function() return vim.split(vim.fn.input("args> "), " ") end,
+                            type = "delve",
+                            name = "file",
+                            request = "launch",
+                            program = "${file}",
+                            outputMode = "remote",
+                        })
+                        table.insert(config.configurations, 1, {
+                            args = function() return vim.split(vim.fn.input("args> "), " ") end,
+                            type = "delve",
+                            name = "file args",
+                            request = "launch",
+                            program = "${file}",
+                            outputMode = "remote",
+                        })
+                        require("mason-nvim-dap").default_setup(config)
+                    end,
                 },
             })
         end,
     },
 }
-

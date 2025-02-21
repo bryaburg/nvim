@@ -33,7 +33,7 @@ return {
         }
       end)
 
-      require "config.telescope.multigrep".setup()
+      --require "config.telescope.multigrep".setup()
     end
   }
 }

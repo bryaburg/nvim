@@ -27,6 +27,19 @@ return {
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { '<leader>g', group = 'Git' },
+      { '<leader>l', group = '[L]azygit' },
+      { '<leader>f', group = '[F]iles' },
+      { '<leader>b', group = '[B]uffer' },
+      { '<leader>u', group = '[U]tilities' },
+      { '<leader>z', group = '[Z]en' },
+      { '<leader>n', group = '[N]otifications' },
+      { '<leader>q', group = '[Q]uickfix' },
+      { '<leader>:', group = '[C]ommand History' },
+      { '<leader>;', group = '[S]cratch' },
+      { '<leader>o', group = '[O]ther' },
+      { '<leader>h', group = '[H]elp' },
+      { '<leader>x', group = 'Diagnostics' },
     }
   }
 }

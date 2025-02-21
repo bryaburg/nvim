@@ -26,21 +26,25 @@ return {
     -- Register all keymaps
     wk.add({
       mode = { "n", "v" }, -- Set default mode to NORMAL and VISUAL
+      -- Help related (moved from <leader>nh to <leader>h)
+      { "<leader>h", group = "[H]elp" },
+      { "<leader>h?", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+      { "<leader>hk", "<cmd>Telescope keymaps<cr>", desc = "Key Mappings" },
+      { "<leader>hm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+      { "<leader>hh", "<cmd>Telescope highlights<cr>", desc = "Highlight Groups" },
+      { "<leader>hc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+      { "<leader>ho", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+      { "<leader>ha", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+
       -- Project related
       { "<leader>p", group = "[P]roject" },
       { "<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Find File" },
       { "<leader>ps", "<cmd>Telescope live_grep<cr>", desc = "Search by Grep" },
-      
-      -- Word search related
-      { "<leader>pw", group = "[W]ord Search" },
       { "<leader>pws", function()
           local builtin = require('telescope.builtin')
           local word = vim.fn.expand("<cword>")
           builtin.grep_string({ search = word })
       end, desc = "Search Current Word" },
-      
-      -- WORD search related (includes more characters)
-      { "<leader>pW", group = "[W]ORD Search" },
       { "<leader>pWs", function()
           local builtin = require('telescope.builtin')
           local word = vim.fn.expand("<cWORD>")
@@ -99,25 +103,21 @@ return {
       -- Other related
       { "<leader>o", group = "[O]ther" },
       
-      -- Help related
-      { "<leader>h", group = "[H]elp" },
-      
       -- Diagnostics related
       { "<leader>x", group = "Diagnostics" },
     })
 
-    -- Add descriptions for the project search subgroups
+    -- Register help subgroup descriptions
     wk.register({
-      ["<leader>p"] = {
-        name = "[P]roject",
-        w = {
-          name = "[W]ord Search",
-          s = "Search Current Word",
-        },
-        W = {
-          name = "[W]ORD Search",
-          s = "Search Current WORD",
-        },
+      ["<leader>h"] = {
+        name = "[H]elp",
+        ["?"] = "Help Pages",
+        k = "Key Mappings",
+        m = "Man Pages",
+        h = "Highlight Groups",
+        c = "Commands",
+        o = "Options",
+        a = "Auto Commands",
       },
     })
   end

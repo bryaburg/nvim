@@ -6,32 +6,26 @@ GENERAL/LEADER KEYS
 Space           Leader key (<leader>)
 \               Local leader key (<localleader>)
 
-BASIC OPERATIONS
----------------
+LSP & CODE NAVIGATION
+-------------------
 K               Hover Documentation
-<leader>gd      Goto Definition
-<leader>gr      Goto References
-<leader>ca      Code Action
 gd              Goto Definition
+gD              Goto Declaration
 gr              Find References
 gi              Goto Implementation
-gD              Goto Declaration
-K               Hover Documentation
+gy              Goto Type Definition
 <C-k>           Signature Help
-<leader>rn      Rename
+<leader>rn      Incremental Rename
 <leader>ca      Code Action
-<leader>f       Format
-<leader>wa      Add Workspace Folder
-<leader>wr      Remove Workspace Folder
-<leader>wl      List Workspace Folders
-<leader>D       Type Definition
+<leader>gf      Format
 <leader>e       Show Line Diagnostics
-[n]gd           Next Diagnostic
-[p]gd           Previous Diagnostic
+[d              Next Diagnostic
+[D              Previous Diagnostic
 
 WHICH-KEY
 ---------
 <leader>?       Show buffer local keymaps
+<leader>!       Show all keymaps (including hidden)
 
 TROUBLE
 -------
@@ -47,85 +41,50 @@ DEBUG
 <leader>dt      Toggle breakpoint
 <leader>dc      Continue debugging
 
-SNACKS PLUGIN
-------------
-Top Pickers & Explorer:
-<leader><space> Smart Find Files
-<leader>,       Buffers
-<leader>/       Grep
-<leader>:       Command History
-<leader>n       Notification History
-<leader>e       File Explorer
+FILE NAVIGATION & SEARCH
+----------------------
+<C-p>           Find Files
+<leader>fg      Live Grep
+<leader><leader> Recent Files
+<C-n>           Explorer
 
-Find Operations:
-<leader>fb      Buffers
-<leader>fc      Find Config File
+TELESCOPE/FIND OPERATIONS
+-----------------------
 <leader>ff      Find Files
-<leader>fg      Find Git Files
+<leader>fg      Find with Grep
+<leader>fb      Find Buffers
+<leader>fr      Recent Files
 <leader>fp      Projects
-<leader>fr      Recent
 
-Git Operations:
-<leader>gb      Git Branches
+GIT OPERATIONS
+------------
+<leader>lg      LazyGit
 <leader>gl      Git Log
-<leader>gL      Git Log Line
-<leader>gs      Git Status
-<leader>gS      Git Stash
-<leader>gd      Git Diff (Hunks)
-<leader>gf      Git Log File
-<leader>gg      LazyGit
+<leader>gd      Git Definition
+<leader>gr      Git References
 
-Search Operations:
+SEARCH OPERATIONS
+---------------
 <leader>sb      Buffer Lines
-<leader>sB      Grep Open Buffers
 <leader>sg      Grep
 <leader>sw      Grep word under cursor
-<leader>s"      Registers
-<leader>s/      Search History
-<leader>sa      Autocmds
-<leader>sc      Command History
-<leader>sC      Commands
 <leader>sd      Diagnostics
 <leader>sD      Buffer Diagnostics
-<leader>sh      Help Pages
-<leader>sH      Highlights
-<leader>si      Icons
-<leader>sj      Jumps
-<leader>sk      Keymaps
-<leader>sl      Location List
-<leader>sm      Marks
-<leader>sM      Man Pages
-<leader>sp      Search Plugin Spec
-<leader>sq      Quickfix List
-<leader>sR      Resume
-<leader>su      Undo History
-<leader>uC      Colorschemes
-
-LSP NAVIGATION & ACTIONS
------------------------
-gd              Goto Definition
-gD              Goto Declaration
-gr              Find References
-gI              Goto Implementation
-gy              Goto Type Definition
 <leader>ss      LSP Symbols
 <leader>sS      LSP Workspace Symbols
 
-Other Features:
-<leader>z       Toggle Zen Mode
-<leader>Z       Toggle Zoom
-<leader>.       Toggle Scratch Buffer
-<leader>S       Select Scratch Buffer
+NOTIFICATIONS
+------------
+<leader>n       Notification History
+<leader>un      Dismiss All Notifications
+
+BUFFER OPERATIONS
+---------------
 <leader>bd      Delete Buffer
 <leader>cR      Rename File
-<leader>gB      Git Browse
-<leader>un      Dismiss All Notifications
-<C-/> or <C-_>  Toggle Terminal
-]]              Next Reference
-[[              Previous Reference
-<leader>N       Neovim News
 
-Toggle Options:
+TOGGLE OPTIONS
+------------
 <leader>us      Toggle Spelling
 <leader>uw      Toggle Wrap
 <leader>uL      Toggle Relative Number
@@ -145,3 +104,17 @@ COMPLETION (nvim-cmp)
 <C-Space>       Complete
 <C-e>           Abort completion
 <CR>            Confirm completion
+
+WORKSPACE
+--------
+<leader>wa      Add Workspace Folder
+<leader>wr      Remove Workspace Folder
+<leader>wl      List Workspace Folders
+
+MISC
+----
+<C-/>           Toggle Terminal
+]]              Next Reference
+[[              Previous Reference
+<leader>N       Neovim News
+

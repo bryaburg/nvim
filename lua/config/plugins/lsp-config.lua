@@ -1,68 +1,58 @@
 return {
   {
     "williamboman/mason.nvim",
-    lazy = true,
+    lazy = false,
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = true,
+    lazy = false,
     opts = {
-      auto_install = true,
       ensure_installed = {
-        "tailwindcss",
+        "lua_ls",          -- Lua
+        "pyright",         -- Python
+        "gopls",          -- Go
+        "clangd",         -- C/C++
+        "tsserver",       -- JavaScript/TypeScript
+        "html",           -- HTML
+        "cssls",          -- CSS
+        "tailwindcss",    -- Tailwind CSS
+        "marksman",       -- Markdown
       },
+      auto_install = true,
     },
   },
   {
     "neovim/nvim-lspconfig",
-    lazy = true,
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+    },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-      -- Configure lua language server for neovim
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {'vim'},
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            -- Do not send telemetry data
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      })
+      local lspconfig = require('lspconfig')
+      
+      -- Configure each LSP
+      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.pyright.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
+      lspconfig.clangd.setup({ capabilities = capabilities })
+      lspconfig.tsserver.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.cssls.setup({ capabilities = capabilities })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities })
+      lspconfig.marksman.setup({ capabilities = capabilities })
 
-      -- Use mason-lspconfig to automatically setup handlers
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-      })
-
-      -- Keymaps
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Goto References" })
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+      -- Key mappings for LSP functionality
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
     end,
   },
 }

@@ -1,46 +1,34 @@
-return {
+return{
   "folke/snacks.nvim",
-  dependencies = {
-    "echasnovski/mini.icons", -- we'll keep this as it's needed for icons
-  },
   priority = 1000,
   lazy = false,
+  ---@type snacks.Config
   opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
     bigfile = { enabled = true },
-    dashboard = {
-      enabled = true,
-      preset = {
-        header = [[
-                                                                     
-       ████ ██████           █████      ██                     
-      ███████████             █████                             
-      █████████ ███████████████████ ███   ███████████   
-     █████████  ███    █████████████ █████ ██████████████   
-    █████████ ██████████ █████████ █████ █████ ████ █████   
-  ███████████ ███    ███ █████████ █████ █████ ████ █████  
- ██████  █████████████████████ ████ █████ █████ ████ ██████ 
-        ]],
-      },
-    },
+    dashboard = { enabled = true },
+    explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    git = { enabled = true },
     picker = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
+    scope = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    bufdelete = { enabled = true },
+    debug = { enabled = true },
+    lazygit = { enabled = true },
+    session = { enabled = true },
+    terminal = { enabled = true },
+    treesitter = { enabled = true },
+    ui = { enabled = true },
+    whichkey = { enabled = true },
+    toggle = { enabled = true },
+    utils = { enabled = true },
+    win = { enabled = true },
   },
-  keys = {
-    { "<leader>sf", function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer" },
-    { "<leader>S", function() require("snacks").scratch.select() end, desc = "Select Scratch Buffer" },
-    { "<leader>gl", function() require("snacks").lazygit.log_file() end, desc = "Lazygit Log (cwd)" },
-    { "<leader>lg", function() require("snacks").lazygit() end, desc = "Lazygit" },
-    { "<C-p>", function() require("snacks").picker.pick("files") end, desc = "Find Files" },
-    { "<leader><leader>", function() require("snacks").picker.recent() end, desc = "Recent Files" },
-    { "<leader>fb", function() require("snacks").picker.buffers() end, desc = "Buffers" },
-    { "<leader>fg", function() require("snacks").picker.grep() end, desc = "Grep Files" },
-    { "<C-n>", function() require("snacks").explorer() end, desc = "Explorer" },
-  }
 }

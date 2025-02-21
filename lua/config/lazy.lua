@@ -1,6 +1,3 @@
--- Set up error handling first
-require("config.error").setup()
-
 -- Then load other configurations
 require("config.vim-options")
 require("lazy").setup({

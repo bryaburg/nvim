@@ -1,6 +1,3 @@
--- Neo tree 
--- vim.keymap.set('n', '<leader>h', ':Neotree Filesystem reveal left<CR>')
-
 -- Highlight text on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",

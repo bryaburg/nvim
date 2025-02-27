@@ -1,56 +1,57 @@
 return{
   "folke/snacks.nvim",
+  dependencies = { 
+    'folke/which-key.nvim' 
+  },
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
   opts = {
-    setup = { enabled = true },
+    animations = { enabled = false },
     bigfile = { enabled = true },
+    bufdelete = { enabled = false },
     dashboard = { enabled = true },
+    debug = { enabled = true },
+    dim = { enabled = true },
     explorer = { enabled = true },
-    lazygit = { enabled = true },
+    git = { enabled = true },
     gitbrowse = { enabled = true },
+    image = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
-    image = {
-      enabled = true,
-      -- Optional: additional image configuration
-      backend = "ueberzug", -- or "kitty"
-      render = {
-        min_padding = 5,
-        show_label = true,
-      },
-    },
+    layout = { enabled = true },
+    lazygit = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
     notify = { enabled = true },
     picker = { enabled = true },
+    profile = { enabled = true },
     quickfile = { enabled = true },
+    rename = { enabled = false },
     scope = { enabled = true },
+    scratch = { enabled = false },
     scroll = { enabled = true },
-    statuscolumn = {
+    statuscolumn = { enabled = true },
+    terminal = { enabled = true },
+    toggle = { enabled = true },
+    utils = { enabled = true },
+    win = { 
       enabled = true,
-      -- Statuscolumn configuration
-      config = {
-        scope = {
-          enabled = true,
-        },
-        fold = {
-          enabled = true,
-        },
-        sep = "│",
-        numberwidth = 4,  -- Adjust this value based on your preference
+      input = {
+          keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ["J"] = { "preview_scroll_down", mode = { "i", "n" } },
+              ["K"] = { "preview_scroll_up", mode = { "i", "n" } },
+              ["H"] = { "preview_scroll_left", mode = { "i", "n" } },
+              ["L"] = { "preview_scroll_right", mode = { "i", "n" } },
+          },
       },
     },
-    toggle = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = {
-        wo = { wrap = true } -- Wrap notifications
-      }
-    }
+    styles = {enabled = true},
+    zen = { enabled = false },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -68,7 +69,6 @@ return{
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     -- git
-    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
@@ -120,7 +120,7 @@ return{
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
-    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },

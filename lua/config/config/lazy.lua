@@ -1,5 +1,4 @@
 -- Then load other configurations
-require("config.vim-options")
 require("lazy").setup({
 	spec = {
 		{ "folke/tokyonight.nvim",  config = function() vim.cmd.colorscheme "tokyonight" end },
@@ -11,4 +10,4 @@ require("lazy").setup({
 		notify = true, -- get a notification when changes are found
 	},
 })
-require("config.keymappings")
+require("config.config")

@@ -1,7 +1,8 @@
 return{
   "folke/snacks.nvim",
   dependencies = { 
-    'folke/which-key.nvim' 
+    'folke/which-key.nvim',
+    'nvim-treesitter/nvim-treesitter',
   },
   priority = 1000,
   lazy = false,
@@ -10,7 +11,7 @@ return{
     animations = { enabled = false },
     bigfile = { enabled = true },
     bufdelete = { enabled = false },
-    dashboard = { enabled = true },
+    dashboard = { enabled = true,},
     debug = { enabled = true },
     dim = { enabled = true },
     explorer = { enabled = true },
@@ -50,7 +51,21 @@ return{
       },
     },
     words = { enabled = true },
-    styles = {enabled = true},
+    styles = {
+      enabled = true,
+      -- Add treesitter specific configuration
+      treesitter = {
+        enable = true,
+        disable = function(lang, buf)
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+          return false
+        end,
+      },
+    },
     zen = { enabled = false },
   },
   keys = {

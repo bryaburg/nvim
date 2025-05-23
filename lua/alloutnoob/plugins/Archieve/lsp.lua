@@ -1,5 +1,4 @@
 return {
-    enable = false
     "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",

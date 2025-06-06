@@ -1,64 +1,44 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-vim.g.have_nerd_font = true
-vim.opt.mouse = 'a'
-vim.opt.showmode = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.wo.number = true
-vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false
+vim.cmd("let g:netrw_liststyle = 3")
 
--- Clipboard configuration
-local function is_windows()
-    return vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1
-end
+local opt = vim.opt -- for conciseness
 
-local function has_wsl()
-    local output = vim.fn.systemlist "uname -r"
-    return not not string.find(output[1] or "", "WSL")
-end
+-- line numbers
+opt.relativenumber = true -- show relative line numbers
+opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
-local function has_clipboard_tool()
-    if is_windows() or has_wsl() then
-        return vim.fn.executable('win32yank.exe') == 1
-    end
-    return vim.fn.executable('xclip') == 1 
-        or vim.fn.executable('wl-copy') == 1 
-        or vim.fn.executable('pbcopy') == 1  -- for MacOS
-end
+-- tabs & indentation
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
+opt.autoindent = true -- copy indent from current line when starting new one
 
-if has_clipboard_tool() then
-    if is_windows() or has_wsl() then
-        vim.g.clipboard = {
-            name = 'win32yank-wsl',
-            copy = {
-                ['+'] = 'win32yank.exe -i --crlf',
-                ['*'] = 'win32yank.exe -i --crlf',
-            },
-            paste = {
-                ['+'] = 'win32yank.exe -o --lf',
-                ['*'] = 'win32yank.exe -o --lf',
-            },
-            cache_enabled = 0,
-        }
-    else
-        -- For Linux/MacOS, use the default unnamedplus clipboard
-        vim.opt.clipboard = 'unnamedplus'
-    end
-else
-    local msg = ""
-    if is_windows() or has_wsl() then
-        msg = "No clipboard tool found. Please install win32yank."
-    else
-        msg = "No clipboard tool found. Please install xclip (X11) or wl-clipboard (Wayland)"
-    end
-    vim.notify(msg, vim.log.levels.WARN)
-end
+-- line wrapping
+opt.wrap = false -- disable line wrapping
+
+-- search settings
+opt.ignorecase = true -- ignore case when searching
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+
+-- cursor line
+opt.cursorline = true -- highlight the current cursor line
+
+-- appearance
+
+-- turn on termguicolors for nightfly colorscheme to work
+-- (have to use iterm2 or any other true color terminal)
+opt.termguicolors = true
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
+opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+
+-- backspace
+opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+
+-- clipboard
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+
+-- split windows
+opt.splitright = true -- split vertical window to the right
+opt.splitbelow = true -- split horizontal window to the bottom
+
+-- turn off swapfile
+opt.swapfile = false

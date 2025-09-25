@@ -15,10 +15,6 @@ return
 
     signature = {
       enabled = true,
-      timeout = 4000,
-      auto_dismiss = true,
-      floating_window = true,
-      hint = 'Press <Tab> to accept',
     },
   },
 }

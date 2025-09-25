@@ -3,6 +3,7 @@ return
 {
 
   "mason-org/mason.nvim",
+  { "mason-org/mason-lspconfig.nvim", config = function() end },
   cmd = "Mason",
   keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   build = ":MasonUpdate",
